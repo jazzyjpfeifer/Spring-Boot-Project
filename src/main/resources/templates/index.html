@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Home')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <h1>Welcome to BI Steps</h1>
+            <p class="text-muted">A site dedicated to business intelligence and data analytics</p>
+            <h3>Latest Posts:</h3>
+            <div class="blog-post">
+                <h2 class="blog-post-title">Title Goes Here</h2>
+                <p class="blog-post-meta">Date and author go here</p>
+                <p class="blog-post-summary">Summary goes here</p>
+            </div>
+        </div>
+
+        <div class="col-sm-3 offset-sm-1 blog-sidebar">
+            <div class="sidebar-module">
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">March 2016</a></li>
+                    <li><a href="#">February 2016</a></li>
+                    <li><a href="#">January 2016</a></li>
+                    <li><a href="#">December 2016</a></li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Category</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">SSMS</a></li>
+                    <li><a href="#">SSAS</a></li>
+                    <li><a href="#">SSIS</a></li>
+                    <li><a href="#">SSRS</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+    </div>
+</div>
+
+
+
+<footer th:replace="fragments/footer :: footer">
+
+
+</footer>
+</body>
+</html>

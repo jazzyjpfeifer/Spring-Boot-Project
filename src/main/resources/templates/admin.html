@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Admin')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <h1>Admin</h1>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="/users">Users</a></li>
+                <li class="list-group-item"><a href="/roles">Roles</a></li>
+                <li class="list-group-item"><a href="/posts">Posts</a></li>
+                <li class="list-group-item"><a href="/content_type">Content Type</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

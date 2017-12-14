@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Posts')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="container">
+            <h1>Content Types</h1>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Content Type:</th>
+                        <th>Sequence Order:</th>
+                        <th>Actions:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="content_type : ${content_types}">
+                        <td th:text="${content_type.ContentType}"></td>
+                        <td th:text="${content_type.Sequence}"></td>
+                        <td><a th:href="@{'/content_type/edit/'(id=${content_type.id})}">Edit</a></td>
+                        <td><a th:href="@{'/content_type/delete/'(id=${content_type.id})}">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="/content_type/add" class="btn btn-primary">+ Add New Content Type</a>
+                <div class="web-links">
+                    <a href="/admin">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

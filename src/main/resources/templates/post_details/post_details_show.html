@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Post Detail')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <h1>Post Details</h1>
+    <h3 th:text="${post.title}"></h3>
+    <p th:text="${post.summary}"></p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID:</th>
+            <th>Content:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pd : ${post.postdetails}">
+            <td th:text="${pd.id}"></td>
+            <td th:text="${pd.content}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{'/post_details/add'(postId = ${post.id})}">Add Details to Post Here</a>
+    <div class="web-links">
+        <a href="/posts">Go Back</a>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

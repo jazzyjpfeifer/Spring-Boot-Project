@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Posts')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="container">
+            <h1>Posts</h1>
+            <a href="/post_details/add" class="btn btn-primary admin-menu">+ Add More Content to Post</a>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID:</th>
+                        <th>Content:</th>
+                        <th>Actions:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pd : ${postdetails}">
+                        <td th:text="${pd.id}"></td>
+                        <td th:text="${pd.content}"></td>
+                        <td><a th:href="@{'/posts/edit/'(postId = ${pd.id})}">Edit</a></td>
+                        <td><a th:href="@{'/posts/delete/'(postId=${pd.id})}">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-default" href="/admin">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

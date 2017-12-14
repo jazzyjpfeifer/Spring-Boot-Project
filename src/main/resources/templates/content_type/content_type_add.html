@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Add Content Type')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+
+    <h1>Add Content Type</h1>
+
+    <form action="#" th:action="@{/content_type/save}" th:object="${type}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="form-group">
+            <label for="content_type">Content Type:</label>
+            <input type="text" class="form-control" id="content_type" th:field="*{ContentType}" />
+        </div>
+        <div class="form-group">
+            <label for="sequence">Content Order Sequence:</label>
+            <select class="form-control" id="sequence" name="sequence" >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <div class="web-links">
+        <a href="/content_type">Go Back</a>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

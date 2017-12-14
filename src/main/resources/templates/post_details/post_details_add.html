@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Posts')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="container">
+            <h1>Post Details</h1>
+
+            <form action="#" th:action="@{'/post_details/save'(postId = ${post.id})}" th:object="${postdetails}" method="post">
+                <div class="form-group">
+                    <label for="content_type">Content Type:</label>
+                    <select id="content_type" name="content_id">
+                        <option th:each="type : ${allTypes}"
+                                th:value="${type.id}"
+                                th:text="${type.ContentType}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content:</label>
+                    <input type="text" id="content" th:field="${postdetails.content}"/>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save Details to Post</button>
+                </div>
+            </form>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID:</th>
+                    <th>Content:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pd : ${post.postdetails}">
+                    <td th:text="${pd.id}"></td>
+                    <td th:text="${pd.content}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="web-links">
+                <a href="/posts">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
