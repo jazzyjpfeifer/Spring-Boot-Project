@@ -8,21 +8,26 @@
     <h1>Post Details</h1>
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.summary}"></p>
+    <a class="btn btn-primary admin-menu" th:href="@{'/post_details/add'(postId = ${post.id})}">Add Details to Post Here</a>
     <table class="table">
         <thead>
         <tr>
             <th>ID:</th>
             <th>Content:</th>
+            <th>Content Type:</th>
+            <th>Actions:</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="pd : ${post.postdetails}">
             <td th:text="${pd.id}"></td>
             <td th:text="${pd.content}"></td>
+            <td th:text="${pd.contentType.getContentType()}"></td>
+            <td><a th:href="@{'/post_details/edit/'(post_detail_id=${pd.id}, postId=${post.id})}">Edit</a></td>
+            <td><a th:href="@{'/post_details/delete/'(post_detail_id=${pd.id}, postId=${post.id})}">Delete</a></td>
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-primary" th:href="@{'/post_details/add'(postId = ${post.id})}">Add Details to Post Here</a>
     <div class="web-links">
         <a href="/posts">Go Back</a>
     </div>
