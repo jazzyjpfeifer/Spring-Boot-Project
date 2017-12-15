@@ -12,7 +12,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID:</th>
+            <th>Order:</th>
             <th>Content:</th>
             <th>Content Type:</th>
             <th>Actions:</th>
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         <tr th:each="pd : ${post.postdetails}">
-            <td th:text="${pd.id}"></td>
+            <td th:text="${pd.sequence}"></td>
             <td th:text="${pd.content}"></td>
             <td th:text="${pd.contentType.getContentType()}"></td>
             <td><a th:href="@{'/post_details/edit/'(post_detail_id=${pd.id}, postId=${post.id})}">Edit</a></td>
