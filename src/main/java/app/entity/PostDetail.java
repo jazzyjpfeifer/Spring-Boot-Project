@@ -18,6 +18,9 @@ public class PostDetail {
     @Column(name = "sequence")
     private int sequence;
 
+    @Column(name = "file")
+    private String file;
+
     @OneToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="content_type_id")
@@ -76,15 +79,23 @@ public class PostDetail {
         this.sequence = sequence;
     }
 
+    public String getImage() {
+        return file;
+    }
+
+    public void setImage(String image) {
+        this.file = image;
+    }
+
     @Override
     public String toString() {
         return "PostDetail{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", sequence=" + sequence +
+                ", image='" + file + '\'' +
                 ", contentType=" + contentType +
                 ", post=" + post +
                 '}';
     }
-
 }

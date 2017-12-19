@@ -35,9 +35,7 @@ public class Post {
     private String author;
 
     @OneToMany(mappedBy = "post",
-            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH},
-            fetch = FetchType.LAZY)
+            cascade= CascadeType.ALL)
     private List<PostDetail> postdetails;
 
     public Post() {

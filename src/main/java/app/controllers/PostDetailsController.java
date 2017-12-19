@@ -7,10 +7,20 @@ import app.repository.ContentTypeRepository;
 import app.repository.PostDetailRepository;
 import app.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 @RequestMapping("/post_details")
@@ -25,6 +35,8 @@ public class PostDetailsController {
     @Autowired
     ContentTypeRepository contentTypeRepository;
 
+    @Autowired
+    private Environment env;
 
 
     @GetMapping("/show")
@@ -58,8 +70,31 @@ public class PostDetailsController {
     public String savePostDetails(RedirectAttributes redirectAttributes,
                                   @ModelAttribute("postdetail") PostDetail postDetail,
                                   @RequestParam("postId") int post_id,
-                                  @RequestParam("content_id") int content_id) {
+                                  @RequestParam("content_id") int content_id,
+                                  @RequestParam("file") MultipartFile file) {
 
+        if (!file.isEmpty()) {
+            try {
+                String filename = file.getOriginalFilename();
+                String directory = env.getProperty("upload.directory");
+                String filepath = Paths.get(directory, filename).toString();
+
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filepath)));
+                stream.write(file.getBytes());
+                stream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        String image_name = file.getOriginalFilename();
+
+        //Saving original file name to db
+        if(file.isEmpty()) {
+            postDetail.setImage(null);
+        } else {
+            postDetail.setImage(file.getOriginalFilename());
+        }
 
         //Getting Post by ID
         Post post = postRepository.findOne(post_id);
