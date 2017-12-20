@@ -15,14 +15,10 @@ public class ContentType {
     private String ContentType;
 
     @Column(name = "sequence")
-    private int Sequence;
+    private int sequence;
 
     public ContentType() {
 
-    }
-
-    public ContentType(String contentType) {
-        ContentType = contentType;
     }
 
     public int getId() {
@@ -42,11 +38,11 @@ public class ContentType {
     }
 
     public int getSequence() {
-        return Sequence;
+        return sequence;
     }
 
     public void setSequence(int sequence) {
-        Sequence = sequence;
+        this.sequence = sequence;
     }
 
     @Override
@@ -54,7 +50,7 @@ public class ContentType {
         return "ContentType{" +
                 "id=" + id +
                 ", ContentType='" + ContentType + '\'' +
-                ", Sequence=" + Sequence +
+                ", sequence=" + sequence +
                 '}';
     }
 }

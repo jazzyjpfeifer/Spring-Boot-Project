@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Post')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <h1 th:text="${post.title}"></h1>
+    <p class="blog-post-meta" th:text="'Posted on ' + ${post.datePosted} ">Author and date go here</p>
+    <p th:text="${post.summary}"></p>
+
+
+    <div class="blog-post" th:each="pd : ${postdetails}">
+        <p th:text="${pd.content}"></p>
+    </div>
+
+
+    <div class="web-links">
+        <a href="/">Go Back</a>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

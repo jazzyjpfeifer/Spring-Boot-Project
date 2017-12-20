@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Controller
 @RequestMapping("/post_details")
@@ -44,11 +45,27 @@ public class PostDetailsController {
 
         Post post = postRepository.findOne(post_id);
 
-        post.getPostdetails();
+        List<PostDetail> postDetails = postDetailRepository.findAllByPostOrderBySequence(post);
 
         model.addAttribute("post", post);
 
+        model.addAttribute("postdetails", postDetails);
+
         return "post_details/post_details_show";
+    }
+
+    @GetMapping("/view")
+    public String viewPostDetailsByPostId(@RequestParam("postId") int post_id, Model model) {
+
+        Post post = postRepository.findOne(post_id);
+
+        List<PostDetail> postDetails = postDetailRepository.findAllByPostOrderBySequence(post);
+
+        model.addAttribute("post", post);
+
+        model.addAttribute("postdetails", postDetails);
+
+        return "post_details/post_details_view";
     }
 
     @GetMapping(value = "/add")

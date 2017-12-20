@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/content_type")
 public class ContentTypeController {
@@ -17,7 +19,9 @@ public class ContentTypeController {
     @GetMapping()
     public String showAllContentTypes (Model model) {
 
-        model.addAttribute("content_types", contentTypeRepository.findAll());
+        List<ContentType> contentTypes = contentTypeRepository.findAllByOrderBySequence();
+
+        model.addAttribute("content_types", contentTypes);
 
         return "content_type/content_types";
     }
@@ -36,6 +40,8 @@ public class ContentTypeController {
     public String saveContentType(@ModelAttribute("type") ContentType contentType) {
 
         contentTypeRepository.save(contentType);
+
+        System.out.println(contentType);
 
         System.out.println("Content Type was saved to the database successfully");
 

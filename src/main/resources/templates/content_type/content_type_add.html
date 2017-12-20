@@ -12,11 +12,11 @@
         <input type="hidden" th:field="*{id}"/>
         <div class="form-group">
             <label for="content_type">Content Type:</label>
-            <input type="text" class="form-control" id="content_type" th:field="*{ContentType}" />
+            <input type="text" class="form-control" id="content_type" th:field="*{contentType}" />
         </div>
         <div class="form-group">
             <label for="sequence">Content Order Sequence:</label>
-            <select class="form-control" id="sequence" name="sequence" >
+            <select class="form-control" id="sequence" value="sequence" name="sequence">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
