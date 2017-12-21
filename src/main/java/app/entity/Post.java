@@ -23,6 +23,14 @@ public class Post {
     @Lob
     private String summary;
 
+    @Column(name = "author")
+    private String author;
+
+    @OneToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name="category_id")
+    private Category category;
+
     @CreationTimestamp
     @Column(name = "datePosted", updatable = false, insertable = true)
     private Timestamp datePosted;
@@ -30,9 +38,6 @@ public class Post {
     @UpdateTimestamp
     @Column(name = "date_last_modified", updatable = true, insertable = true)
     private Timestamp dateLastModified;
-
-    @Column(name = "author")
-    private String author;
 
     @OneToMany(mappedBy = "post",
             cascade= CascadeType.ALL)
@@ -98,6 +103,14 @@ public class Post {
         this.author = author;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public List<PostDetail> getPostdetails() {
         return postdetails;
     }
@@ -119,20 +132,17 @@ public class Post {
 
     }
 
-
-
-
     @Override
     public String toString() {
         return "Post{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", summary='" + summary + '\'' +
+                ", author='" + author + '\'' +
+                ", category=" + category +
                 ", datePosted=" + datePosted +
                 ", dateLastModified=" + dateLastModified +
-                ", author=" + author +
                 ", postdetails=" + postdetails +
                 '}';
     }
-
 }

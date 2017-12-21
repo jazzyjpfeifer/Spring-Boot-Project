@@ -9,10 +9,16 @@
     <p class="blog-post-meta" th:text="'Posted on ' + ${post.datePosted} ">Author and date go here</p>
     <p th:text="${post.summary}"></p>
 
-
-    <div class="blog-post" th:each="pd : ${postdetails}">
-        <p th:text="${pd.content}"></p>
+    <div class="blog-post">
+        <th:block th:each="pd : ${postdetails}">
+            <h4 th:if="${pd.contentType.getContentType()} == 'Header' or ${pd.contentType.getContentType() == 'Results'}" th:text="${pd.content}"></h4>
+            <p th:if="${pd.contentType.getContentType() == 'Paragraph'}" th:text="${pd.content}"></p>
+            <pre><code th:if="${pd.contentType.getContentType() == 'Code'}" th:text="${pd.content}"></code></pre>
+            <img th:if="${pd.image != null}" th:src="@{/images/} + ${pd.image}" class="img-fluid" th:alt="${pd.image}"/>
+        </th:block>
     </div>
+
+
 
 
     <div class="web-links">

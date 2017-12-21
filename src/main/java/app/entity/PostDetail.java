@@ -18,8 +18,8 @@ public class PostDetail {
     @Column(name = "sequence")
     private int sequence;
 
-    @Column(name = "file")
-    private String file;
+    @Column(name = "image_name")
+    private String image;
 
     @OneToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
@@ -55,22 +55,6 @@ public class PostDetail {
         this.content = content;
     }
 
-    public ContentType getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(ContentType contentType) {
-        this.contentType = contentType;
-    }
-
-    public app.entity.Post getPost() {
-        return post;
-    }
-
-    public void setPost(app.entity.Post post) {
-        this.post = post;
-    }
-
     public int getSequence() {
         return sequence;
     }
@@ -80,11 +64,27 @@ public class PostDetail {
     }
 
     public String getImage() {
-        return file;
+        return image;
     }
 
     public void setImage(String image) {
-        this.file = image;
+        this.image = image;
+    }
+
+    public ContentType getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(ContentType contentType) {
+        this.contentType = contentType;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class PostDetail {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", sequence=" + sequence +
-                ", image='" + file + '\'' +
+                ", image='" + image + '\'' +
                 ", contentType=" + contentType +
                 ", post=" + post +
                 '}';

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Categories')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="container">
+            <h1>Categories</h1>
+            <a href="/category/add" class="btn btn-primary admin-menu">+ Add Category</a>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Category Type:</th>
+                        <th>Sequence Order:</th>
+                        <th>Actions:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category : ${categories}">
+                        <td th:text="${category.category}"></td>
+                        <td th:text="${category.sequence}"></td>
+                        <td><a th:href="@{'/category/edit/'(id=${category.id})}">Edit</a></td>
+                        <td><a th:href="@{'/category/delete/'(id=${category.id})}">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="web-links">
+                    <a href="/admin">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
