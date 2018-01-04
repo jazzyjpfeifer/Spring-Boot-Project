@@ -17,9 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -39,6 +36,19 @@ public class PostDetailsController {
     @Autowired
     private Environment env;
 
+    @GetMapping()
+    public String viewPostDetailsByPostId(@RequestParam("postId") int post_id, Model model) {
+
+        Post post = postRepository.findOne(post_id);
+
+        List<PostDetail> postDetails = postDetailRepository.findAllByPostOrderBySequence(post);
+
+        model.addAttribute("post", post);
+
+        model.addAttribute("postdetails", postDetails);
+
+        return "post_details/post_details";
+    }
 
     @GetMapping("/show")
     public String showPostDetailsByPostId(@RequestParam("postId") int post_id, Model model) {
@@ -54,19 +64,6 @@ public class PostDetailsController {
         return "post_details/post_details_show";
     }
 
-    @GetMapping("/view")
-    public String viewPostDetailsByPostId(@RequestParam("postId") int post_id, Model model) {
-
-        Post post = postRepository.findOne(post_id);
-
-        List<PostDetail> postDetails = postDetailRepository.findAllByPostOrderBySequence(post);
-
-        model.addAttribute("post", post);
-
-        model.addAttribute("postdetails", postDetails);
-
-        return "post_details/post_details_view";
-    }
 
     @GetMapping(value = "/add")
     public String showPostDetailsForm(@RequestParam("postId") int post_id, Model model) {

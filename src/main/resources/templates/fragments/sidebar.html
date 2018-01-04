@@ -1,0 +1,15 @@
+<div th:fragment="sidebar" class="col-sm-3 offset-sm-1 blog-sidebar" xmlns:th="http://www.thymeleaf.org">
+    <div class="sidebar-module">
+        <h4>Archives</h4>
+        <ol class="list-unstyled">
+            <li th:each="a : ${archives}">
+            <a th:href="@{'/search/archives/'}" th:text="${#dates.monthName(a)} + ' ' + ${#dates.year(a)}"></a></li>
+        </ol>
+    </div>
+    <div class="sidebar-module">
+        <h4>Category</h4>
+        <ol class="list-unstyled">
+            <li th:each="c : ${categories}"><a th:href="@{'/search/category/'(CategoryId=${c.id})}" th:text="${c.description}"></a></li>
+        </ol>
+    </div>
+</div><!-- /.blog-sidebar -->

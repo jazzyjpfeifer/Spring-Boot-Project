@@ -18,11 +18,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="category : ${categories}">
-                        <td th:text="${category.category}"></td>
-                        <td th:text="${category.sequence}"></td>
-                        <td><a th:href="@{'/category/edit/'(id=${category.id})}">Edit</a></td>
-                        <td><a th:href="@{'/category/delete/'(id=${category.id})}">Delete</a></td>
+                    <tr th:each="c : ${categories}">
+                        <td th:text="${c.description}"></td>
+                        <td th:text="${c.sequence}"></td>
+                        <td><a th:href="@{'/category/edit/'(id=${c.id})}">Edit</a></td>
+                        <td><a th:href="@{'/category/delete/'(id=${c.id})}">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>

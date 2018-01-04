@@ -12,16 +12,16 @@
         <input type="hidden" th:field="*{id}"/>
         <div class="form-group">
             <label for="category">Category:</label>
-            <input type="text" class="form-control" id="category" th:field="*{category}" />
+            <input type="text" class="form-control" id="category" th:field="*{description}" />
         </div>
         <div class="form-group">
             <label for="sequence">Sequence:</label>
-            <input type="number" class="form-control" id="sequence" th:field="*{sequence}" />
+            <input type="text" class="form-control" id="sequence" th:field="*{sequence}" />
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
     <div class="web-links">
-        <a href="/content_type">Go Back</a>
+        <a href="/category">Go Back</a>
     </div>
 </div>
 <footer th:replace="fragments/footer :: footer"></footer>

@@ -1,34 +1,28 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head (title='Posts')"></head>
+<head th:replace="fragments/head :: head (title='Post')"></head>
 <body>
 <div class="container">
     <header th:replace="fragments/header :: header"></header>
-    <div class="row">
-        <div class="container">
-            <h1>Posts</h1>
-            <a href="/post_details/add" class="btn btn-primary admin-menu">+ Add More Content to Post</a>
-            <div class="row">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>ID:</th>
-                        <th>Content:</th>
-                        <th>Actions:</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="pd : ${postdetails}">
-                        <td th:text="${pd.id}"></td>
-                        <td th:text="${pd.content}"></td>
-                        <td><a th:href="@{'/posts/edit/'(postId = ${pd.id})}">Edit</a></td>
-                        <td><a th:href="@{'/posts/delete/'(postId=${pd.id})}">Delete</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <a class="btn btn-default" href="/admin">Go Back</a>
-            </div>
-        </div>
+    <h1 th:text="${post.title}"></h1>
+    <p class="blog-post-meta" th:text="'Posted on ' + ${post.datePosted} ">Author and date go here</p>
+    <p th:text="${post.summary}"></p>
+
+    <div class="blog-post">
+        <th:block th:each="pd : ${postdetails}">
+            <h4 th:if="${pd.contentType.getContentType()} == 'Header' or ${pd.contentType.getContentType() == 'Results'}" th:text="${pd.content}"></h4>
+            <p th:if="${pd.contentType.getContentType() == 'Paragraph'}" th:text="${pd.content}"></p>
+            <pre><code th:if="${pd.contentType.getContentType() == 'Code'}" th:text="${pd.content}"></code></pre>
+            <img th:if="${pd.image != null}" th:src="@{/images/} + ${pd.image}" class="img-fluid" th:alt="${pd.image}"/>
+        </th:block>
+    </div>
+
+
+
+
+    <div class="web-links">
+        <a href="/">Go Back</a>
     </div>
 </div>
 <footer th:replace="fragments/footer :: footer"></footer>

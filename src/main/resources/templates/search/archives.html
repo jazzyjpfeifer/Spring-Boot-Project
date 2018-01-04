@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Home')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <h1>Archives:</h1>
+            <h3>Results:</h3>
+        </div>
+
+        <div class="col-sm-3 offset-sm-1 blog-sidebar">
+            <div class="sidebar-module">
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">March 2016</a></li>
+                    <li><a href="#">February 2016</a></li>
+                    <li><a href="#">January 2016</a></li>
+                    <li><a href="#">December 2016</a></li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Category</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">SSMS</a></li>
+                    <li><a href="#">SSAS</a></li>
+                    <li><a href="#">SSIS</a></li>
+                    <li><a href="#">SSRS</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+    </div>
+</div>
+
+
+
+<footer th:replace="fragments/footer :: footer">
+
+
+</footer>
+</body>
+</html>

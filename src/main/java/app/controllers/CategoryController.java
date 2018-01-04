@@ -5,15 +5,12 @@ import app.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/category")
+@RequestMapping(value = "category")
 public class CategoryController {
 
     @Autowired
@@ -43,13 +40,34 @@ public class CategoryController {
     @PostMapping("/save")
     public String saveCategory(@ModelAttribute("category") Category category) {
 
-        //categoryRepository.save(category);
+        categoryRepository.save(category);
 
-        //System.out.println(category);
+        System.out.println(category);
 
         System.out.println("Category was saved to the database successfully");
 
         return "redirect:/category";
+    }
+
+    @GetMapping("/edit")
+    public String editCategoryById(@RequestParam("id") int id, Model model) {
+
+        model.addAttribute("category", categoryRepository.findOne(id));
+
+        return "categories/category_add";
+    }
+
+    @GetMapping("/delete")
+    public String deleteCategory(@RequestParam("id") int id) {
+
+        System.out.println("Deleting record...");
+
+        categoryRepository.delete(id);
+
+        System.out.println("Record was removed succesfully from the database");
+
+        return "redirect:/category";
+
     }
 
 

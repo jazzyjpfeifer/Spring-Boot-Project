@@ -9,8 +9,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "sequence")
     private int sequence;
@@ -27,12 +27,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDescription(String category) {
+        this.description = category;
     }
 
     public int getSequence() {
@@ -47,7 +47,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
                 ", sequence=" + sequence +
                 '}';
     }
