@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -39,8 +41,6 @@ public class PostController {
 
         model.addAttribute("post", newPost);
 
-
-
         return "/posts/post_add";
 
     }
@@ -53,6 +53,28 @@ public class PostController {
         Category category = categoryRepository.findOne(category_id);
 
         post.setCategory(category);
+
+        LocalDate todaysdate = LocalDate.now();
+
+        //Setting Start Month and Year for date range searches
+        String startDate = String.valueOf(todaysdate.withDayOfMonth(1));
+
+        //Formatting text and then concatenate for month
+
+        String posted_month1 = todaysdate.getMonth().name().substring(0,1).toUpperCase();
+        String posted_month2 = todaysdate.getMonth().name().substring(1).toLowerCase();
+        String posted_month = posted_month1 + posted_month2;
+
+        Integer posted_year = todaysdate.getYear();
+
+        //Setting End Month and Year for date range searches
+        String endDate = String.valueOf(todaysdate.withDayOfMonth(31));
+
+        post.setMonthPosted(posted_month);
+
+        post.setYearPosted(posted_year);
+
+        post.setMonthYearPosted(posted_month + ' ' + posted_year);
 
         // save the customer using our service
         postRepository.save(post);

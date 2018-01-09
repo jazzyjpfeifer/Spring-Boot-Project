@@ -8,7 +8,7 @@
         <div class="col-sm-8 blog-main">
             <h1>Welcome to BI Steps</h1>
             <p class="text-muted">A site dedicated to Business Intelligence and Data Analytics</p>
-            <h3>Latest Posts:</h3>
+            <h4>Latest Posts:</h4>
             <div class="blog-post" th:each="p : ${posts}">
                 <h2 class="blog-post-title" th:text="${p.title}">Title Goes Here</h2>
                 <p class="blog-post-meta" th:text="'Posted on ' + ${#dates.monthName(p.datePosted)} + ' ' + ${#dates.day(p.datePosted)} + ', ' + ${#dates.year(p.datePosted)} ">Author and date go here</p>
@@ -20,8 +20,6 @@
         <div th:replace="fragments/sidebar :: sidebar"></div>
     </div>
 </div>
-
-
 
 <footer th:replace="fragments/footer :: footer">
 

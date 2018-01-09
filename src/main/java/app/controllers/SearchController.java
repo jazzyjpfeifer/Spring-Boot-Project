@@ -33,7 +33,7 @@ public class SearchController {
 
         long count = postRepository.countPostByTitleLike("%" + title + "%");
 
-        List<Post> archives = postRepository.distinctDates();
+        List<Post> archives = postRepository.distinctMonthsYearsPosted();
 
         model.addAttribute("posts", posts);
 
@@ -47,17 +47,23 @@ public class SearchController {
     }
 
     @GetMapping("/archives")
-    public String searchByDate(Model model,
-                               @RequestParam("startDate") Timestamp startDate,
-                               @RequestParam("endDate") Timestamp endDate) {
+    public String searchByDate(Model model, @RequestParam("month_year") String  month_year) {
 
         List<Category> categories = categoryRepository.findAllByOrderBySequence();
 
-        List<Post> posts = postRepository.findPostByDatePostedBetween(startDate, endDate);
+        List<Post> posts = postRepository.findPostByMonthYearPosted(month_year);
+
+        List<Post> archives = postRepository.distinctMonthsYearsPosted();
+
+        Long count = postRepository.countPostByMonthYearPosted(month_year);
 
         model.addAttribute("posts", posts);
 
         model.addAttribute("categories", categories);
+
+        model.addAttribute("archives", archives);
+
+        model.addAttribute("count", count);
 
         return "search/archives";
     }
@@ -69,7 +75,7 @@ public class SearchController {
 
         List<Post> posts = postRepository.findPostByCategoryId(CategoryId);
 
-        List<Post> archives = postRepository.distinctDates();
+        List<Post> archives = postRepository.distinctMonthsYearsPosted();
 
         long count = postRepository.countPostsByCategoryId(CategoryId);
 

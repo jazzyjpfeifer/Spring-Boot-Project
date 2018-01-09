@@ -30,7 +30,7 @@ public class MainController {
 
         List<Category> categories = categoryRepository.findAllByOrderBySequence();
 
-        List<Post> archives = postRepository.distinctDates();
+        List<Post> archives = postRepository.distinctMonthsYearsPosted();
 
         model.addAttribute("categories", categories);
 

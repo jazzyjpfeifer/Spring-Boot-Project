@@ -5,7 +5,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -34,6 +36,15 @@ public class Post {
     @CreationTimestamp
     @Column(name = "datePosted", updatable = false, insertable = true)
     private Timestamp datePosted;
+
+    @Column(name = "monthPosted")
+    private String monthPosted;
+
+    @Column(name = "yearPosted")
+    private Integer yearPosted;
+
+    @Column(name = "monthYearPosted")
+    private String monthYearPosted;
 
     @UpdateTimestamp
     @Column(name = "date_last_modified", updatable = true, insertable = true)
@@ -85,6 +96,30 @@ public class Post {
 
     public void setDatePosted(Timestamp datePosted) {
         this.datePosted = datePosted;
+    }
+
+    public String getMonthPosted() {
+        return monthPosted;
+    }
+
+    public void setMonthPosted(String monthPosted) {
+        this.monthPosted = monthPosted;
+    }
+
+    public Integer getYearPosted() {
+        return yearPosted;
+    }
+
+    public void setYearPosted(Integer yearPosted) {
+        this.yearPosted = yearPosted;
+    }
+
+    public String getMonthYearPosted() {
+        return monthYearPosted;
+    }
+
+    public void setMonthYearPosted(String monthYearPosted) {
+        this.monthYearPosted = monthYearPosted;
     }
 
     public Timestamp getDateLastModified() {
@@ -141,6 +176,9 @@ public class Post {
                 ", author='" + author + '\'' +
                 ", category=" + category +
                 ", datePosted=" + datePosted +
+                ", monthPosted='" + monthPosted + '\'' +
+                ", yearPosted=" + yearPosted +
+                ", monthYearPosted=" + monthYearPosted +
                 ", dateLastModified=" + dateLastModified +
                 ", postdetails=" + postdetails +
                 '}';

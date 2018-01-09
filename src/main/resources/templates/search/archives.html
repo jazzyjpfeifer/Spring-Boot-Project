@@ -6,30 +6,18 @@
     <header th:replace="fragments/header :: header"></header>
     <div class="row">
         <div class="col-sm-8 blog-main">
-            <h1>Archives:</h1>
-            <h3>Results:</h3>
+            <h1>Search by Date:</h1>
+            <p class="text-muted">Number of results found: <span th:text="${count}"></span></p>
+            <div class="blog-post" th:each="p : ${posts}">
+                <h2 class="blog-post-title" th:text="${p.title}">Title Goes Here</h2>
+                <p class="blog-post-meta" th:text="'Posted on ' + ${p.datePosted} ">Author and date go here</p>
+                <p class="blog-post-summary" th:text="${p.summary}">Summary goes here</p>
+                <a th:href="@{'/post_details/'(postId = ${p.id})}" type="button" class="btn btn-outline-primary">Read More</a>
+            </div>
         </div>
 
-        <div class="col-sm-3 offset-sm-1 blog-sidebar">
-            <div class="sidebar-module">
-                <h4>Archives</h4>
-                <ol class="list-unstyled">
-                    <li><a href="#">March 2016</a></li>
-                    <li><a href="#">February 2016</a></li>
-                    <li><a href="#">January 2016</a></li>
-                    <li><a href="#">December 2016</a></li>
-                </ol>
-            </div>
-            <div class="sidebar-module">
-                <h4>Category</h4>
-                <ol class="list-unstyled">
-                    <li><a href="#">SSMS</a></li>
-                    <li><a href="#">SSAS</a></li>
-                    <li><a href="#">SSIS</a></li>
-                    <li><a href="#">SSRS</a></li>
-                </ol>
-            </div>
-        </div><!-- /.blog-sidebar -->
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+
     </div>
 </div>
 

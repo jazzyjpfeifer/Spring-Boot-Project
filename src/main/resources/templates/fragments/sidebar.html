@@ -3,11 +3,11 @@
         <h4>Archives</h4>
         <ol class="list-unstyled">
             <li th:each="a : ${archives}">
-            <a th:href="@{'/search/archives/'}" th:text="${#dates.monthName(a)} + ' ' + ${#dates.year(a)}"></a></li>
+                <a th:href="@{'/search/archives/'(month_year=${a})}" th:text="${a}"></a></li>
         </ol>
     </div>
     <div class="sidebar-module">
-        <h4>Category</h4>
+        <h4>Categories</h4>
         <ol class="list-unstyled">
             <li th:each="c : ${categories}"><a th:href="@{'/search/category/'(CategoryId=${c.id})}" th:text="${c.description}"></a></li>
         </ol>

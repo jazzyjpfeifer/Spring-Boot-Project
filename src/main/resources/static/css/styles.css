@@ -1,11 +1,15 @@
 html {
     position: relative;
     min-height: 100%;
+
 }
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    font-family: 'Lato', sans-serif;
+
 }
+
 
 .admin-menu {
     margin-top: 1em;
@@ -22,20 +26,28 @@ body {
 }
 
 .blog-post {
-    margin-bottom: 4rem;
+    margin-bottom: 3em;
 }
 .blog-post-title {
-    margin-bottom: .25rem;
-    font-size: 2.5rem;
+    margin-bottom: .25em;
+    font-size: 2em;
 }
 .blog-post-meta {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1em;
     color: #999;
+}
+
+.blog-post-summary {
+    margin-bottom: 1em;
+}
+
+.img-fluid {
+    margin-bottom: 1.25em;
 }
 
 /*** Sidebar modules for boxing content ***/
 .sidebar-module {
-    padding: 1rem;
+    padding: 1em;
     /*margin: 0 -1rem 1rem;*/
 }
 
