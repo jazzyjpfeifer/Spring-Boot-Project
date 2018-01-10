@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface PostDetailRepository extends CrudRepository<PostDetail, Integer> {
 
-    public List<PostDetail> findAllByPostOrderBySequence(Post post);
+    List<PostDetail> findAllByPostOrderBySequence(Post post);
 
 
 

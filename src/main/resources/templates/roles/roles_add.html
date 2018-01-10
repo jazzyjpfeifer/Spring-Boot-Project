@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='New Role')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+
+    <h1>Add New Role</h1>
+
+    <form action="#" th:action="@{/roles/save}" th:object="${role}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="form-group">
+            <label for="role">Role Description:</label>
+            <input type="text" class="form-control" id="role" th:field="*{roleDescription}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <div class="web-links">
+        <a href="/roles">Go Back</a>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -96,6 +96,8 @@ public class PostController {
         return "/posts/post_add";
     }
 
+
+
     @GetMapping(value = "/delete")
     public String deletePostById(@RequestParam("postId") int id) {
 

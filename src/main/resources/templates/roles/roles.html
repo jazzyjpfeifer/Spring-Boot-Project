@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='Posts')"></head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header :: header"></header>
+    <div class="row">
+        <div class="container">
+            <h1>Roles</h1>
+            <a href="/roles/add" class="btn btn-primary admin-menu">+ Add New Role</a>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Role Description:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="role : ${roles}">
+                        <td th:text="${role.roleDescription}"></td>
+                        <td><a th:href="@{'/roles/edit/'(roleId = ${role.id})}">Edit</a></td>
+                        <td><a th:href="@{'/roles/delete/'(roleId=${role.id})}">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-default" href="/admin">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

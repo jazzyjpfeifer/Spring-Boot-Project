@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ContentTypeRepository extends CrudRepository<ContentType, Integer>{
 
-    public List<ContentType> findAllByOrderBySequence();
+    List<ContentType> findAllByOrderBySequence();
 
 }

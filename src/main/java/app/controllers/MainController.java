@@ -42,14 +42,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/admin")
     public String admin() {
         return "admin";
     }
 
-    @GetMapping("/archives")
-    public String archives() {
-        return "archives";
-    }
+
 
 }
