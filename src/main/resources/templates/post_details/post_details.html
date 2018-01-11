@@ -5,7 +5,7 @@
 <body>
 <div class="container">
     <header th:replace="fragments/header :: header"></header>
-    <h1 th:text="${post.title}"></h1>
+    <h1 class="blog-post-detail-title" th:text="${post.title}"></h1>
     <p class="blog-post-meta" th:text="'Posted on ' + ${post.datePosted} ">Author and date go here</p>
     <p th:text="${post.summary}"></p>
 

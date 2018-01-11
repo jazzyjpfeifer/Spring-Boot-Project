@@ -9,7 +9,7 @@
             <h1>Welcome to BI Steps</h1>
             <p class="text-muted">A site dedicated to Business Intelligence and Data Analytics</p>
             <h4>Latest Posts:</h4>
-            <div class="blog-post" th:each="p : ${posts}">
+            <div class="blog-post bd-callout bd-callout-info" th:each="p : ${posts}">
                 <h2 class="blog-post-title" th:text="${p.title}">Title Goes Here</h2>
                 <p class="blog-post-meta" th:text="'Posted on ' + ${#dates.monthName(p.datePosted)} + ' ' + ${#dates.day(p.datePosted)} + ', ' + ${#dates.year(p.datePosted)} ">Author and date go here</p>
                 <p class="blog-post-summary" th:text="${p.summary}">Summary goes here</p>

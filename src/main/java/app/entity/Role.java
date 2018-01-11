@@ -13,6 +13,10 @@ public class Role {
     @Column(name = "role_description")
     private String RoleDescription;
 
+    public Role() {
+
+    }
+
     public int getId() {
         return id;
     }
