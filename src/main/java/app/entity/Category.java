@@ -3,6 +3,7 @@ package app.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name="category", schema = "web_app")
 public class Category {
 
     @Id

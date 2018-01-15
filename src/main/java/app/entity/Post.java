@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "posts", schema = "web_app")
 public class Post {
 
     @Id

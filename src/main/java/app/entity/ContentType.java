@@ -3,7 +3,7 @@ package app.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "content_type")
+@Table(name = "content_type", schema = "web_app")
 public class ContentType {
 
     @Id

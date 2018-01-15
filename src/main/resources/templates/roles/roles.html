@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="role : ${roles}">
-                        <td th:text="${role.roleDescription}"></td>
+                        <td th:text="${role.role}"></td>
                         <td><a th:href="@{'/roles/edit/'(roleId = ${role.id})}">Edit</a></td>
                         <td><a th:href="@{'/roles/delete/'(roleId=${role.id})}">Delete</a></td>
                     </tr>
